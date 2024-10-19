@@ -99,7 +99,7 @@ class DetailScreen extends StatelessWidget {
           Text(': ${candi.type}')
         ],
         ),
-        // Text(candi.description),
+        
         ],
         ),
         ),
@@ -110,11 +110,11 @@ class DetailScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Divider(color: Colors.deepPurple.shade100,),
-              Text(''),
+              Text('Deskripsi', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
               SizedBox(height: 10,),
               SizedBox(),
               SizedBox(height: 4,),
-              Text(''),
+              Text(candi.description),
             ],
           ),
         ),
