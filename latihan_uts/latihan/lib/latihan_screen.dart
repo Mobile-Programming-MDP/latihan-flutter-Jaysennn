@@ -7,16 +7,17 @@ class LatihanScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Latihan UTS'),
+        title: const Text("Latihan UTS"),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
+        child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Center(
               child: Text(
-                'INFORMATIKA',
+                "INFORMATIKA",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
               ),
             ),
@@ -25,8 +26,8 @@ class LatihanScreen extends StatelessWidget {
             ),
             Image.asset(
               "images/latihan.png",
-              height: 250,
               width: double.infinity,
+              height: 150,
               fit: BoxFit.cover,
             ),
             const SizedBox(
@@ -37,8 +38,8 @@ class LatihanScreen extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
             ),
             const Text(
-              "Kota Palembang, Prov. Sumatera Selatan",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              "Kota Palembang, Prov. Sumatera Selatan ",
+              style: TextStyle(fontSize: 18),
             ),
             const SizedBox(
               height: 16,
@@ -52,11 +53,9 @@ class LatihanScreen extends StatelessWidget {
                 padding: EdgeInsets.all(16),
                 child: Column(
                   children: [
-                    // Baris berisi info
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Kiri
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,20 +86,20 @@ class LatihanScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        // Kanan
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Tanggal Berdiri",
+                                'Tanggal Berdiri',
                                 style: TextStyle(color: Colors.white),
                               ),
                               Text(
                                 "9 April 2021",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
                               ),
                               SizedBox(
                                 height: 8,
@@ -112,66 +111,65 @@ class LatihanScreen extends StatelessWidget {
                               Text(
                                 "5000",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ],
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 16),
-                    // Baris berisi kontak
+                    SizedBox(
+                      height: 8,
+                    ),
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        // Telp: Icon + Text
-                        Expanded(
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.phone,
-                                color: Colors.white,
-                              ),
-                              SizedBox(width: 4),
-                              Text(
-                                '0711-376400',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ],
-                          ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.phone,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 4,
+                            ),
+                            Text(
+                              "0711-376400",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
                         ),
-                        // Email: Icon + Text
-                        Expanded(
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.mail,
-                                color: Colors.white,
-                              ),
-                              SizedBox(width: 4),
-                              Text(
-                                'mdp@gmail.com',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ],
-                          ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.mail,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 4,
+                            ),
+                            Text(
+                              "kuliah@mdp.ac.id",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
                         ),
-                        // Website: Icon + Text
-                        Expanded(
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.web,
-                                color: Colors.white,
-                              ),
-                              SizedBox(width: 4),
-                              Text(
-                                'mdp.com',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ],
-                          ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.link,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 4,
+                            ),
+                            Text(
+                              "mdp.ac.id",
+                              style: TextStyle(color: Colors.white),
+                            )
+                          ],
                         ),
                       ],
                     ),
@@ -179,9 +177,53 @@ class LatihanScreen extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(
+              height: 16,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.grey[600],
+              ),
+              width: double.infinity,
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Alamat",
+                    ),
+                    Text(
+                      "data",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.red[900],
+                      ),
+                      width: double.infinity,
+                      height: 50,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("Lihat Map", style: TextStyle(color: Colors.white),)
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
+      )
     );
   }
 }
