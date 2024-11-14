@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wisata_candi/data/candi_data.dart';
 import 'package:wisata_candi/detail_screen.dart';
+import 'package:wisata_candi/home_screen.dart';
 import 'package:wisata_candi/profile_screen.dart';
 import 'package:wisata_candi/search_screen.dart';
 
@@ -13,6 +14,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: SearchScreen());
+    return MaterialApp(home: HomeScreen());
   }
 }
