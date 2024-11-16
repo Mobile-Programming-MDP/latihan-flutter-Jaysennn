@@ -29,6 +29,23 @@ class DetailScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 32
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple[100]?.withOpacity(0.8),
+                    shape: BoxShape.circle
+                  ),
+                  child: IconButton(onPressed: (){
+                    Navigator.pop(context);
+                  }, icon: const Icon(
+                    Icons.arrow_back
+                  )),
+                ),
+              ),
             ],
           ),
 
