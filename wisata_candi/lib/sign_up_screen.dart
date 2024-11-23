@@ -15,41 +15,45 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   String _errorText = "";
   bool _obscurePassword = true;
-  //TODO 1:
-  void _signUp() async{
+  //TODO 1 : Fungsi Signup
+  void _signUp() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final String name = _nameController.text.trim();
-    final String username = _usernameController.text.trim();
-    final String password = _passwordController.text.trim();
 
-    if(password.length < 8 || 
-    !password.contains(RegExp(r'[A-Z]')) ||
-    !password.contains(RegExp(r'[a-z]')) ||
-    !password.contains(RegExp(r'[0-9]')) ||
-    !password.contains(RegExp(r'[!@#$%^&*()<>?:"{}|,./;\]'))){
+    String name = _nameController.text.trim();
+    String username = _usernameController.text.trim();
+    String password = _passwordController.text.trim();
+
+    if (password.length < 8 ||
+        !password.contains(RegExp(r'[A-Z]')) ||
+        !password.contains(RegExp(r'[a-z]')) ||
+        !password.contains(RegExp(r'[0-9]')) ||
+        !password.contains(RegExp(r'[@#$%^&*(),.?":{}|<>]'))) {
       setState(() {
-        _errorText=
-          'Minimal 8 Karakter, Kombinasi Semua';
+        _errorText =
+            'Minimal 8 karakter, kombinasi [A-Z], [a-z], [0-9], [!@#\\\$%^&*(),.?":{}|<>]';
       });
       return;
+    } else {
+      setState(() {
+        _errorText = "";
+      });
     }
 
-    // print('*** Sign Up Berhasil ***');
-    // print('Nama: $name');
-    // print('Nama Pengguna: $username');
-    // print('Password: $password');
-
-    prefs.setString('fullname', name);
+    prefs.setString('name', name);
     prefs.setString('username', username);
     prefs.setString('password', password);
 
     Navigator.pushReplacementNamed(context, '/signin');
   }
 
-  //TODO 2: Fungsi Dispose
+  //TODO 2 : Fungsi Dispose
+
   @override
-  void dispose(){
-    //TODO: Implement Dispose
+  void dispose() {
+    // TODO: implement dispose
+    _nameController.dispose();
+    _usernameController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -57,53 +61,56 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign Up'),
+        title: const Text("Sign Up"),
       ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Form(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Nama",
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  const SizedBox(height: 20,),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Nama Pengguna",
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  const SizedBox(height: 20,),
-                  TextFormField(
-                    controller: _passwordController,
-                    decoration: InputDecoration(
-                      labelText: 'Kata Sandi',
-                      errorText: _errorText.isNotEmpty ? _errorText : null,
-                      border: const OutlineInputBorder(),
-                    ),
-                    obscureText: _obscurePassword,
-                  ),
-                  const SizedBox(height: 20,),
-                  ElevatedButton(
-                    onPressed: (){
-                      Navigator.push(
-                        context, 
-                        MaterialPageRoute(
-                          builder: (context) => SignUpScreen()));
-                    }, 
-                    child: const Text('Sign Up'),
-                  ),
-                ],
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextFormField(
+                controller: _nameController,
+                decoration: const InputDecoration(
+                  labelText: "Nama",
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: _usernameController,
+                decoration: const InputDecoration(
+                  labelText: "Nama Pengguna",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: _passwordController,
+                decoration: InputDecoration(
+                  labelText: "Kata Sandi",
+                  errorText: _errorText.isNotEmpty ? _errorText : null,
+                  border: const OutlineInputBorder(),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _obscurePassword = !_obscurePassword;
+                      });
+                    },
+                    icon: Icon(_obscurePassword
+                        ? Icons.visibility_off
+                        : Icons.visibility),
+                  ),
+                ),
+                obscureText: _obscurePassword,
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _signUp,
+                child: const Text("Sign Up"),
+              )
+            ],
           ),
         ),
       ),

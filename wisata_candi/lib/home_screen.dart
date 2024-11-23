@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wisata_candi/data/candi_data.dart';
+import 'package:wisata_candi/models/candi.dart';
 import 'package:wisata_candi/item_card.dart';
-import '../models/candi.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,20 +14,22 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //TODO1 : appBar
-      appBar: AppBar(title: Text('Wisata Candi'),),
-
-      //TODO2 : Gridview Builder
+      //TODO 1 : appbar
+      appBar: AppBar(title: const Text("Wisata Candi")),
+      //TODO 2 : Gridiview Builder
       body: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        padding: EdgeInsets.all(8),
+        gridDelegate:
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        padding: const EdgeInsets.all(8),
         itemCount: candiList.length,
-        itemBuilder: (context, index){
+        itemBuilder: (context, index) {
+          //TODO 3 : ItemCard
           Candi candi = candiList[index];
-          return ItemCard(candi: candi);
-        }
-        ),
-      //TODO3 : ItemCard
+          return ItemCard(
+            candi: candi,
+          );
+        },
+      ),
     );
   }
 }
