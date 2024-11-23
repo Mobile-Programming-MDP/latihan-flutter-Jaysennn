@@ -5,6 +5,8 @@ import 'package:wisata_candi/favorite_screen.dart';
 import 'package:wisata_candi/home_screen.dart';
 import 'package:wisata_candi/profile_screen.dart';
 import 'package:wisata_candi/search_screen.dart';
+import 'package:wisata_candi/sign_in_screen.dart';
+import 'package:wisata_candi/sign_up_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -19,7 +21,13 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Wisata Candi",
       theme: ThemeData(),
-      home: MainScreen(),
+      home: SignUpScreen(),
+      initialRoute: '/',
+      routes:{
+        '/homescreen' : (context) => const HomeScreen(),
+        '/signin' : (context) => const SignInScreen(),
+        '/signup' : (context) => const SignUpScreen(),
+      }
     );
   }
 }
